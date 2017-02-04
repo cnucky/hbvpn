@@ -2,21 +2,21 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50617
+Source Server Version : 50520
 Source Host           : localhost:3306
 Source Database       : hbvpn
 
 Target Server Type    : MYSQL
-Target Server Version : 50617
+Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2017-02-03 22:00:26
+Date: 2017-02-04 21:01:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for bbb_access
+-- Table structure for `bbb_access`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_access`;
 CREATE TABLE `bbb_access` (
@@ -106,9 +106,44 @@ INSERT INTO `bbb_access` VALUES ('1', '152', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '153', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '160', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '161', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '162', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '163', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '164', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '165', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '166', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '167', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '168', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '169', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '170', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '171', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '172', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '173', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '174', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '175', '0', '0', '0');
 
 -- ----------------------------
--- Table structure for bbb_attachment
+-- Table structure for `bbb_account`
+-- ----------------------------
+DROP TABLE IF EXISTS `bbb_account`;
+CREATE TABLE `bbb_account` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `port` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `secret_way` varchar(80) DEFAULT NULL,
+  `vps_id` bigint(20) DEFAULT NULL,
+  `create_time` int(11) unsigned DEFAULT NULL,
+  `update_time` int(11) unsigned DEFAULT NULL,
+  `create_user` bigint(20) DEFAULT NULL,
+  `update_user` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bbb_account
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `bbb_attachment`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_attachment`;
 CREATE TABLE `bbb_attachment` (
@@ -130,7 +165,7 @@ CREATE TABLE `bbb_attachment` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for bbb_city
+-- Table structure for `bbb_city`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_city`;
 CREATE TABLE `bbb_city` (
@@ -493,7 +528,7 @@ INSERT INTO `bbb_city` VALUES ('342', '31', '省直辖行政单位', '659000', '
 INSERT INTO `bbb_city` VALUES ('343', '2', '天津市', '120100', null, '1', 'tianjinshi', '1');
 
 -- ----------------------------
--- Table structure for bbb_dictionary
+-- Table structure for `bbb_dictionary`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_dictionary`;
 CREATE TABLE `bbb_dictionary` (
@@ -517,7 +552,7 @@ INSERT INTO `bbb_dictionary` VALUES ('17', '消息类型', '2', '0', 'MESSAGE_TY
 INSERT INTO `bbb_dictionary` VALUES ('18', '系统通知', '1', '17', '系统通知', '1', '系统通知');
 
 -- ----------------------------
--- Table structure for bbb_district
+-- Table structure for `bbb_district`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_district`;
 CREATE TABLE `bbb_district` (
@@ -3682,7 +3717,7 @@ INSERT INTO `bbb_district` VALUES ('3143', '31', '342', '图木舒克市', '6590
 INSERT INTO `bbb_district` VALUES ('3144', '31', '342', '五家渠市', '659004', '659000', null, null, null);
 
 -- ----------------------------
--- Table structure for bbb_message
+-- Table structure for `bbb_message`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_message`;
 CREATE TABLE `bbb_message` (
@@ -3703,7 +3738,7 @@ CREATE TABLE `bbb_message` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for bbb_node
+-- Table structure for `bbb_node`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_node`;
 CREATE TABLE `bbb_node` (
@@ -3722,7 +3757,7 @@ CREATE TABLE `bbb_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_node
@@ -3804,17 +3839,25 @@ INSERT INTO `bbb_node` VALUES ('150', 'addOrUpdate', '增加或更新', '1', '�
 INSERT INTO `bbb_node` VALUES ('151', 'pageList', '分页列表', '1', '分页列表', '50', '149', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('152', 'delRows', '删除', '1', '删除', '50', '149', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('153', 'getAll', '获取所有', '1', '获取所有', '50', '149', '3', '0', '0');
-INSERT INTO `bbb_node` VALUES ('154', 'MessageUser', '用户消息管理', '1', '用户消息管理', '50', '1', '2', '0', '0');
-INSERT INTO `bbb_node` VALUES ('155', 'addOrUpdate', '增加或更新', '1', '增加或更新', '50', '154', '3', '0', '0');
-INSERT INTO `bbb_node` VALUES ('156', 'pageList', '分页列表', '1', '分页列表', '50', '154', '3', '0', '0');
-INSERT INTO `bbb_node` VALUES ('157', 'delRows', '删除', '1', '删除', '50', '154', '3', '0', '0');
-INSERT INTO `bbb_node` VALUES ('158', 'getAll', '获取所有', '1', '获取所有', '50', '154', '3', '0', '0');
-INSERT INTO `bbb_node` VALUES ('159', 'updateStatus', '标记已读', '1', '标记已读', '50', '154', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('160', 'password', '修改密码', '1', '修改密码', '50', '2', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('161', 'updatePassword', '修改密码功能', '1', '修改密码功能', '50', '27', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('162', 'VpsMenu', 'vps管理菜单', '1', 'vps管理菜单', '50', '1', '2', '1', '0');
+INSERT INTO `bbb_node` VALUES ('163', 'vps', 'vps管理', '1', 'vps管理', '50', '162', '3', '1', '0');
+INSERT INTO `bbb_node` VALUES ('164', 'server', 'vps服务商', '1', 'vps服务商', '50', '162', '3', '1', '0');
+INSERT INTO `bbb_node` VALUES ('165', 'account', '帐号管理', '1', '帐号管理', '50', '162', '3', '1', '0');
+INSERT INTO `bbb_node` VALUES ('166', 'Server', '服务商管理', '1', '服务商管理', '50', '1', '2', '0', '0');
+INSERT INTO `bbb_node` VALUES ('167', 'addOrUpdate', '增加或更新', '1', '增加或更新', '50', '166', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('168', 'pageList', '分页列表', '1', '分页列表', '50', '166', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('169', 'delRows', '删除', '1', '删除', '50', '166', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('170', 'getAll', '获取所有', '1', '获取所有', '50', '166', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('171', 'Vps', 'Vps管理', '1', 'Vps管理', '50', '1', '2', '0', '0');
+INSERT INTO `bbb_node` VALUES ('172', 'addOrUpdate', '增加或更新', '1', '增加或更新', '50', '171', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('173', 'pageList', '分页列表', '1', '分页列表', '50', '171', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('174', 'delRows', '删除', '1', '删除', '50', '171', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('175', 'getAll', '获取所有', '1', '获取所有', '50', '171', '3', '0', '0');
 
 -- ----------------------------
--- Table structure for bbb_option
+-- Table structure for `bbb_option`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_option`;
 CREATE TABLE `bbb_option` (
@@ -3833,7 +3876,7 @@ CREATE TABLE `bbb_option` (
 INSERT INTO `bbb_option` VALUES ('1', '网站域名', 'www.wpsites.com', '类型字段', '网站的首页域名', 'site_url');
 
 -- ----------------------------
--- Table structure for bbb_province
+-- Table structure for `bbb_province`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_province`;
 CREATE TABLE `bbb_province` (
@@ -3885,7 +3928,7 @@ INSERT INTO `bbb_province` VALUES ('33', '香  港', '810000', null, null, null)
 INSERT INTO `bbb_province` VALUES ('34', '澳  门', '820000', null, null, null);
 
 -- ----------------------------
--- Table structure for bbb_role
+-- Table structure for `bbb_role`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_role`;
 CREATE TABLE `bbb_role` (
@@ -3909,7 +3952,7 @@ CREATE TABLE `bbb_role` (
 INSERT INTO `bbb_role` VALUES ('1', '网站管理员', '0', '1', '网站管理员', null, '1456737906', '1457058948');
 
 -- ----------------------------
--- Table structure for bbb_role_user
+-- Table structure for `bbb_role_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_role_user`;
 CREATE TABLE `bbb_role_user` (
@@ -3928,7 +3971,29 @@ CREATE TABLE `bbb_role_user` (
 INSERT INTO `bbb_role_user` VALUES ('1', '1');
 
 -- ----------------------------
--- Table structure for bbb_user
+-- Table structure for `bbb_server`
+-- ----------------------------
+DROP TABLE IF EXISTS `bbb_server`;
+CREATE TABLE `bbb_server` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) DEFAULT NULL,
+  `domain` varchar(80) DEFAULT NULL,
+  `account` varchar(80) DEFAULT NULL,
+  `password` varchar(80) DEFAULT NULL,
+  `create_time` int(11) unsigned DEFAULT NULL,
+  `update_time` int(11) unsigned DEFAULT NULL,
+  `create_user` bigint(20) DEFAULT NULL,
+  `update_user` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bbb_server
+-- ----------------------------
+INSERT INTO `bbb_server` VALUES ('1', 'bandwagonhost', 'https://bandwagonhost.com/index.php', 'admin', 'admin', '1486196331', '1486198834', '1', '1');
+
+-- ----------------------------
+-- Table structure for `bbb_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_user`;
 CREATE TABLE `bbb_user` (
@@ -3960,3 +4025,26 @@ CREATE TABLE `bbb_user` (
 -- Records of bbb_user
 -- ----------------------------
 INSERT INTO `bbb_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', null, '超级管理员', null, null, null, null, null, null, '1', '1', '超级管理员', '0', null, '0', null, '1458282079', null, null);
+
+-- ----------------------------
+-- Table structure for `bbb_vps`
+-- ----------------------------
+DROP TABLE IF EXISTS `bbb_vps`;
+CREATE TABLE `bbb_vps` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(80) DEFAULT NULL,
+  `sshport` varchar(10) DEFAULT NULL,
+  `account` varchar(80) DEFAULT NULL,
+  `password` varchar(80) DEFAULT NULL,
+  `server_id` bigint(20) DEFAULT NULL,
+  `create_time` int(11) unsigned DEFAULT NULL,
+  `update_time` int(11) unsigned DEFAULT NULL,
+  `create_user` bigint(20) DEFAULT NULL,
+  `update_user` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bbb_vps
+-- ----------------------------
+INSERT INTO `bbb_vps` VALUES ('1', '21.231.11.23', '22', 'root', '21313fdsa', '1', '1486198241', '1486200688', '1', '1');
