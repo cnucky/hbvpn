@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+/* 小屏幕（平板，小于 768px） */
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.client-item{
+	padding-top:10px;
+}
+.client-item p{
+	margin-bottom:10px;
+	margin-top: 10px;
+	font-size: 1.2em;
+}
+.line-title{
+	font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: inherit; position: absolute; margin-left: -1em; padding-right: 0.5em;
+}
+.service-item{
+	padding:1em;
+	text-align: center;
+}
+
+.line-item{
+	padding:1em;
+}
+.tech-item img{
+	width:100%;
+}
+@media (max-width: 768px) {
+	.tech-item img{
+		width:100%;
+	}
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+	.tech-item img{
+		width:500px;
+	}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+	
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+	
+}
