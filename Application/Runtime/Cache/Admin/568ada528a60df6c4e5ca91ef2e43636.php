@@ -1,11 +1,10 @@
 <?php if (!defined('THINK_PATH')) exit();?><script language="javascript">
 $(function(){
-	ajaxGetDictionaryByCode("/hbvpn/Admin/Dictionary/getRowByCode","MESSAGE_TYPE","type_message");
-	var tableList="tableList_message";
-	var auForm ="addForm_message";
-	var saveBtn="saveBtn_message";
-	var addDiv="addDiv_message";
-	var cancelBtn="cancelBtn_message";
+	var tableList="tableList_account";
+	var auForm ="addForm_account";
+	var saveBtn="saveBtn_account";
+	var addDiv="addDiv_account";
+	var cancelBtn="cancelBtn_account";
 	
 	var th = $(".top").height();
 	th = 204-th
@@ -30,7 +29,7 @@ $(function(){
 		pagination:pn,
 		pageSize:pr,
 		pageList:[30,50,80,100],
-		url:'/hbvpn/Admin/Message/pageList',
+		url:'/hbvpn/Admin/Account/pageList',
 		fitColumns:true,
 		nowrap:true,
 		selectOnCheck:false,
@@ -58,7 +57,7 @@ $(function(){
 			handler: function(){
 				var selectedRow=$('#'+tableList).datagrid('getSelected');
 				if(null==selectedRow){
-					$.messager.alert('警告','请先选择一行！','warning');
+					$.message.alert('警告','请先选择一行！','warning');
 				}else{
 					$('#'+auForm).form('load',{
 						'data[id]':selectedRow.id,
@@ -76,10 +75,10 @@ $(function(){
 			handler: function(){
 				var selectedRow=$('#'+tableList).datagrid('getSelected');
 				if(null==selectedRow){
-					$.messager.alert('警告','请先选择一行！','warning');
+					$.message.alert('警告','请先选择一行！','warning');
 				}else{
 					var ids=selectedRow.id;
-					ajaxDelRowsDatagrid('/hbvpn/Admin/Message/delRows',ids,tableList);
+					ajaxDelRowsDatagrid('/hbvpn/Admin/Account/delRows',ids,tableList);
 				}
 			}
 		},'-',{
@@ -128,7 +127,7 @@ $(function(){
 		]]
 	});
 	$("#"+saveBtn).click(function(){
-		ajaxSubmitForm(auForm,'/hbvpn/Admin/Message/addOrUpdate',addDiv,tableList);
+		ajaxSubmitForm(auForm,'/hbvpn/Admin/Account/addOrUpdate',addDiv,tableList);
 	});
 	$("#"+cancelBtn).click(function(){
 		$('#'+addDiv).window('close');
@@ -138,13 +137,13 @@ $(function(){
 </script>
 <div>
  
-	<table id="tableList_message"></table>
+	<table id="tableList_account"></table>
 
 </div>
-<div id="addDiv_message" class="easyui-window" title="添加" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:600px;height:360px;padding:5px;">
+<div id="addDiv_account" class="easyui-window" title="添加" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:600px;height:360px;padding:5px;">
 	<div class="easyui-layout" data-options="fit:true">
 		<div data-options="region:'center',border:true">
-			<form id="addForm_message" class="easyui-form" method="post" data-options="novalidate:true">
+			<form id="addForm_account" class="easyui-form" method="post" data-options="novalidate:true">
 				<input name="data[id]" type="hidden" />
 		    	<table cellpadding="5">
 		    		<tr>
@@ -159,7 +158,7 @@ $(function(){
 		    		<tr>
 		    			<td><div style="width:62px;text-align: right;">类型:</div></td>
 		    			<td>
-		    				<select id="type_message" name="data[type]" class="easyui-combobox" data-options="required:true" style="width:455px;height:30px;" ></select>
+		    				<select id="type_account" name="data[type]" class="easyui-combobox" data-options="required:true" style="width:455px;height:30px;" ></select>
 		    			</td>
 		    		
 		    		</tr>
@@ -171,8 +170,8 @@ $(function(){
 		    </form>
 		</div>
 		<div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-			<a id="saveBtn_message" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-check'" href="javascript:void(0)" style="width:80px">保存</a>
-			<a id="cancelBtn_message" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-times'" href="javascript:void(0)" style="width:80px">取消</a>
+			<a id="saveBtn_account" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-check'" href="javascript:void(0)" style="width:80px">保存</a>
+			<a id="cancelBtn_account" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-times'" href="javascript:void(0)" style="width:80px">取消</a>
 		</div>
 	</div>
 </div>

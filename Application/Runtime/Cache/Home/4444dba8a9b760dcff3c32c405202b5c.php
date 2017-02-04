@@ -7,7 +7,7 @@
  <title>科学上网_影梭_SS_影梭账号_SS账号_影梭使用教程_影梭下载_影梭官网</title>
  <meta name="keywords" content="影梭、SS、科学上网、影梭官网、SS、影梭账号、SS账号、影梭使用教程、影梭下载">
  <meta name="description" content="影梭（SS）精选全球数百优质CN2机房，致力于满足外贸从业者、科技工作者、海淘爱好者以及外游玩家等日益增长的外网加速服务需求，协助网友尽早实现科学上网。">
- 
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <script type="text/javascript" src="/hbvpn/Public/Home/theme/default/js/jquery.min.js"></script>
 <script type="text/javascript" src="/hbvpn/Public/Home/widget/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 
@@ -33,7 +33,7 @@
      </div>
      <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right hidden-sm">
-         	<li><a href="/hbvpn">首页</a></li>
+         	<li><a href="/hbvpn/">首页</a></li>
          	<li><a href="/hbvpn/download.html">使用教程</a></li>
          	<li><a href="/hbvpn/free.html">免费共享</a></li>
          	<li><a href="/hbvpn/user.html">帐户登录</a></li>

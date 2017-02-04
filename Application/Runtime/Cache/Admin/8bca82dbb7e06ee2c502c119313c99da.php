@@ -29,7 +29,7 @@ $(function(){
 		pagination:pn,
 		pageSize:pr,
 		pageList:[30,50,80,100],
-		url:'/taoyongjin/Admin/Attachment/pageList',
+		url:'/hbvpn/Admin/Attachment/pageList',
 		fitColumns:true,
 		nowrap:true,
 		selectOnCheck:false,
@@ -80,7 +80,7 @@ $(function(){
 					$.messager.alert('警告','请先选择一行！','warning');
 				}else{
 					var ids=selectedRow.id;
-					ajaxDelRowsDatagrid('/taoyongjin/Admin/Attachment/delRows',ids,tableList);
+					ajaxDelRowsDatagrid('/hbvpn/Admin/Attachment/delRows',ids,tableList);
 				}
 			}
 		},'-', */{
@@ -145,7 +145,7 @@ $(function(){
 		]]
 	});
 	$("#"+saveBtn).click(function(){
-		ajaxSubmitForm(auForm,'/taoyongjin/Admin/Attachment/addOrUpdate',addDiv,tableList);
+		ajaxSubmitForm(auForm,'/hbvpn/Admin/Attachment/addOrUpdate',addDiv,tableList);
 	});
 	$("#"+cancelBtn).click(function(){
 		$('#'+addDiv).window('close');

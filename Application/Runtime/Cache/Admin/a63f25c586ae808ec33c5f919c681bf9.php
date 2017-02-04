@@ -133,7 +133,7 @@ tick();
 	}
 	/* function initTree(){
 		 var requestData={};
-		 var data=ajaxReturnList("/hbvpn/index.php/Admin/Node/getSessionNodeList",requestData);
+		 var data=ajaxReturnList("/hbvpn/admin.php/Node/getSessionNodeList",requestData);
 		 if(null!=data){
 			 for(var i=0;i<data.length;i++){
 				 $("#leftMenu").append('<div id="firstMenu_'+data[i].id+'" title="系统管理" data-options="iconCls:'+"'icon-setting'"+'">'+
@@ -142,7 +142,7 @@ tick();
 						 '</ul></div>');
 				 var childList=data[i].childList;
 				 for(var j=0;j<childList.length;j++){
-					 $("#firstMenu_"+data[i].id+" ul").append('<li data-options="'+"text:'"+childList[j].title+"',url:'/hbvpn/index.php/Admin/User/index'"+'">'+childList[j].title+'</li>');
+					 $("#firstMenu_"+data[i].id+" ul").append('<li data-options="'+"text:'"+childList[j].title+"',url:'/hbvpn/admin.php/User/index'"+'">'+childList[j].title+'</li>');
 				 }
 			 }
 		 }
@@ -165,7 +165,7 @@ tick();
  </div>
  <div data-options="region:'center'">
   <div id="rightTabs" class="easyui-tabs" data-options="fit:true,border:false">
-    <div title="控制台" data-options="closable:false,id:-1,href:'/hbvpn/index.php/Admin/Index/console'"></div>
+    <div title="控制台" data-options="closable:false,id:-1,href:'/hbvpn/admin.php/Index/console'"></div>
   </div>
  </div>
   <div class="footer" data-options="region:'south'" style="height:50px;">
