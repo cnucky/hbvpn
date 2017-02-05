@@ -61,10 +61,13 @@ $(function(){
 				}else{
 					$('#'+auForm).form('load',{
 						'data[id]':selectedRow.id,
-						'data[name]':selectedRow.name,
-						'data[url]':selectedRow.url,
-						'data[content]':selectedRow.content,
-						'data[type]':selectedRow.type,
+						'data[port]':selectedRow.port,
+						'data[password]':selectedRow.password,
+						'data[vps_id]':selectedRow.vps_id,
+						'data[secret_way]':selectedRow.secret_way,
+						'data[use_qq]':selectedRow.use_qq,
+						'data[use_time]':selectedRow.use_time,
+						'data[start_time]':selectedRow.start_time
 					});
 					$("#"+addDiv).window('open');
 				}
@@ -101,7 +104,10 @@ $(function(){
 			{field:'ip',title:'IP',width:40,sortable:true},
 			{field:'port',title:'端口',width:40,sortable:true},
 			{field:'password',title:'密码',width:40,sortable:true},
-			{field:'secret_way',title:'加密方式',width:40,sortable:true}
+			{field:'secret_way',title:'加密方式',width:40,sortable:true},
+			{field:'use_qq',title:'用户qq',width:40,sortable:true},
+			{field:'start_time',title:'开始时间',width:40,sortable:true},
+			{field:'use_time',title:'使用周期（月）',width:20,sortable:true}
 		]]
 	});
 	$("#"+saveBtn).click(function(){
@@ -110,13 +116,16 @@ $(function(){
 	$("#"+cancelBtn).click(function(){
 		$('#'+addDiv).window('close');
 	});
+	$('#vps_account').combobox({
+	    url:'__ROOT__/Admin/Vps/getAll',
+	    valueField:'id',
+	    textField:'ip'
+	});
 });
 
 </script>
 <div>
- 
 	<table id="tableList_account"></table>
-
 </div>
 <div id="addDiv_account" class="easyui-window" title="添加" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:600px;height:360px;padding:5px;">
 	<div class="easyui-layout" data-options="fit:true">
@@ -125,24 +134,37 @@ $(function(){
 				<input name="data[id]" type="hidden" />
 		    	<table cellpadding="5">
 		    		<tr>
-		    			<td><div style="width:62px;text-align: right;">名称:</div></td>
-		    			<td><input class="easyui-textbox" name="data[name]" data-options="required:true" style="width:455px;height:30px;" type="text"></input></td>
-		    			
+		    			<td><div style="width:62px;text-align: right;">端口:</div></td>
+		    			<td colspan="3"><input class="easyui-textbox" name="data[port]" data-options="required:true" style="width:455px;height:30px;" type="text"></input></td>		    			
 		    		</tr>
 		    		<tr>
-		    			<td><div style="width:62px;text-align: right;">链接:</div></td>
-		    			<td><input class="easyui-textbox" name="data[url]" data-options="required:true" style="width:455px;height:30px;" type="text"></input></td>
+		    			<td><div style="width:62px;text-align: right;">密码:</div></td>
+		    			<td colspan="3"><input class="easyui-textbox" name="data[password]" data-options="required:true" style="width:455px;height:30px;" type="text"></input></td>
 		    		</tr>
 		    		<tr>
-		    			<td><div style="width:62px;text-align: right;">类型:</div></td>
-		    			<td>
-		    				<select id="type_account" name="data[type]" class="easyui-combobox" data-options="required:true" style="width:455px;height:30px;" ></select>
+		    			<td><div style="width:62px;text-align: right;">VPS:</div></td>
+		    			<td colspan="3">
+		    				<select id="vps_account" name="data[vps_id]" class="easyui-combobox" data-options="required:true" style="width:455px;height:30px;" ></select>
 		    			</td>
-		    		
 		    		</tr>
 		    		<tr>
-		    			<td><div style="width:62px;text-align: right;">内容:</div></td>
-		    			<td colspan="1"><input class="easyui-textbox" name="data[content]" data-options="multiline:true,required:true" style="height:100px;width:455px;"></input></td>
+		    			<td><div style="width:62px;text-align: right;">加密:</div></td>
+		    			<td colspan="3">
+		    				<select id="config_secret_way_vps" name="data[secret_way]" class="easyui-combobox" data-options="editable:false" style="width:455px;height:30px;">
+								<option value="aes-256-cfb">aes-256-cfb</option>
+							</select>
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><div style="width:62px;text-align: right;">用户qq:</div></td>
+		    			<td colspan="3"><input class="easyui-textbox" name="data[use_qq]" data-options="" style="width:455px;height:30px;" type="text"></input></td>
+		    		</tr>
+		    		<tr>
+		    			<td><div style="width:62px;text-align: right;">开始时间:</div></td>
+		    			<td><input class="easyui-datebox" name="data[start_time]" data-options="" style="width:184px;height:30px;" type="text"></input></td>
+		    			
+		    			<td><div style="width:62px;text-align: right;">时长/月:</div></td>
+		    			<td><input class="easyui-numberbox" name="data[use_time]" data-options="" style="width:184px;height:30px;" type="text"></input></td>
 		    		</tr>
 		    	</table>
 		    </form>

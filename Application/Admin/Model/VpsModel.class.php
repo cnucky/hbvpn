@@ -28,7 +28,7 @@ class VpsModel extends CommonRelationModel{
         $relation=$example['relation'];
         $result=$object->
             distinct(true)->
-            field('v.id,v.ip,v.sshport,v.account,v.password,v.server_id,s.name as serverName,1 as action')->
+            field('v.id,v.ip,v.sshport,v.account,v.password,v.server_id,s.name as serverName,v.ss_status,1 as action')->
             alias('v')->
             join('LEFT JOIN __SERVER__ s ON s.id = v.server_id')->
             where($condition)->

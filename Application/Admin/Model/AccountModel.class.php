@@ -28,7 +28,7 @@ class AccountModel extends CommonRelationModel{
         $relation=$example['relation'];
         $result=$object->
             distinct(true)->
-            field('a.id,a.port,a.password,a.secret_way,a.port,v.id as vps_id,v.ip')->
+            field('a.id,a.port,a.password,a.secret_way,a.port,a.use_qq,a.use_time,a.start_time,v.id as vps_id,v.ip')->
             alias('a')->
             join('LEFT JOIN __VPS__ v ON v.id = a.vps_id')->
             where($condition)->

@@ -42,14 +42,40 @@ class AccountController extends CommonController {
     			$data['update_user']=$user_id;
     			$rtr['object'] = D($beanName)->updateRow($data,$beanName);
     			$rtr['msg']="更新成功";
-    			$this->ajaxReturn($rtr);
     		}else{
     			$data['create_time']=time();
     			$data['create_user']=$user_id;
     			$rtr['object']= D($beanName)->addRow($data,$beanName);
     			$rtr['msg']="添加成功";
-    			$this->ajaxReturn($rtr);
     		}
+
+    		$condition['a.vps_id']=$data['vps_id'];
+    		$example['condition']=$condition;
+    		$rows=D($beanName)->getAllList($example,$beanName);
+    		for ($i=0;$i<count($rows);$i++){
+    		    $row=$rows[$i];
+    		    if(($i+1)==count($rows)){
+    		        $ip=$row['ip'];
+    		        $port_password=$port_password.'"'.$row['port'].'":'.'"'.$row['password'].'"';
+    		        $comment=$comment.'"'.$row['port'].'":"xiao'.$row['port'].'"';
+    		    }else {
+    		        $ip=$row['ip'];
+    		        $port_password=$port_password.'"'.$row['port'].'":'.'"'.$row['password'].'"'.',';
+    		        $comment=$comment.'"'.$row['port'].'":"xiao'.$row['port'].'",';
+    		    }
+    		}
+    		
+    		$rtr['ss_config']=str_replace("%vps_ip%",$ip,C('SS_CONFIG_MODEL'));
+    		$rtr['ss_config']=str_replace("%port_password%",$port_password,$rtr['ss_config']);
+    		$rtr['ss_config']=str_replace("%comment%",$comment,$rtr['ss_config']);
+    		
+    		//更新vps ss_config字段
+    		$vps['ss_config']=$rtr['ss_config'];
+    		$vps['id']=$data['vps_id'];
+    		D("Vps")->updateSSConfigVps($vps,"Vps");
+
+    		$this->ajaxReturn($rtr);
+    		
     	} catch (\Exception $e) {
     		$rtr['flag']=false;
     		$rtr['msg']="操作失败";

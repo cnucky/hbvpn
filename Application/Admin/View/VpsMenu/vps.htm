@@ -66,6 +66,7 @@ $(function(){
 						'data[account]':selectedRow.account,
 						'data[password]':selectedRow.password,
 						'data[server_id]':selectedRow.server_id,
+						'data[ss_status]':selectedRow.ss_status
 					});
 					$("#"+addDiv).window('open');
 				}
@@ -104,12 +105,23 @@ $(function(){
 			{field:'account',title:'远程帐号',width:40,sortable:true},
 			{field:'password',title:'远程密码',width:40,sortable:true},
 			{field:'serverName',title:'服务商',width:40,sortable:true},
+			{field:'ss_status',title:'SS状态',width:40,sortable:true,
+				formatter: function(value,row,index){
+					var html='';
+					if (value=="1"){
+						return "正常";
+					}else if(value=="2"){
+						return "试用";
+					}
+					return html;
+				}		
+			},
 			{field:'action',title:'功能操作',width:40,sortable:true,
 				formatter: function(value,row,index){
 					var html='';
 					if (row.id){
 						html=html+'<a href="javascript:config_div_vps('+row.id+');" class="easyui-linkbutton" style="width:80px;color:black;">生成配置</a>';
-						html=html+'|=|<a href="javascript:get_config_file_vps('+row.id+');" class="easyui-linkbutton" style="width:80px;color:black;">获取文件</a>';
+						html=html+'||<a href="javascript:get_config_file_vps('+row.id+');" class="easyui-linkbutton" style="width:80px;color:black;">获取文件</a>';
 					}
 					return html;
 				}		
@@ -214,6 +226,17 @@ function get_config_file_vps(id){
 		    				<select id="server_vps" name="data[server_id]" class="easyui-combobox" data-options="required:true" style="width:455px;height:30px;" ></select>
 		    			</td>
 		    		</tr>
+		    		
+		    		<tr>
+		    			<td><div style="width:62px;text-align: right;">SS状态:</div></td>
+		    			<td>
+				    		<select name="data[ss_status]" style="width:455px;height:30px;" class="easyui-combobox">
+								<option value="1">正常</option>
+								<option value="2">试用</option>
+							</select>
+		    			</td>
+		    		</tr>
+		    		
 		    	</table>
 		    </form>
 		</div>

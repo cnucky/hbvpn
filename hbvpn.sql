@@ -2,21 +2,21 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50520
+Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : hbvpn
 
 Target Server Type    : MYSQL
-Target Server Version : 50520
+Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2017-02-05 20:33:34
+Date: 2017-02-06 01:19:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `bbb_access`
+-- Table structure for bbb_access
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_access`;
 CREATE TABLE `bbb_access` (
@@ -128,9 +128,15 @@ INSERT INTO `bbb_access` VALUES ('1', '180', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '181', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '182', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '183', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '184', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '185', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '186', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '187', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '188', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '189', '0', '0', '0');
 
 -- ----------------------------
--- Table structure for `bbb_account`
+-- Table structure for bbb_account
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_account`;
 CREATE TABLE `bbb_account` (
@@ -139,23 +145,73 @@ CREATE TABLE `bbb_account` (
   `password` varchar(20) DEFAULT NULL,
   `secret_way` varchar(80) DEFAULT NULL,
   `vps_id` bigint(20) DEFAULT NULL,
+  `use_qq` varchar(20) DEFAULT NULL,
+  `start_time` date DEFAULT NULL,
+  `use_time` int(11) DEFAULT NULL,
+  `use_unit` varchar(2) DEFAULT NULL,
   `create_time` int(11) unsigned DEFAULT NULL,
   `update_time` int(11) unsigned DEFAULT NULL,
   `create_user` bigint(20) DEFAULT NULL,
   `update_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_account
 -- ----------------------------
-INSERT INTO `bbb_account` VALUES ('136', '40001', '9834930422886962', 'aes-256-cfb', '1', '1486267678', null, '1', null);
-INSERT INTO `bbb_account` VALUES ('137', '40002', '2546051034570922', 'aes-256-cfb', '1', '1486267678', null, '1', null);
-INSERT INTO `bbb_account` VALUES ('138', '40003', '6432464599824218', 'aes-256-cfb', '1', '1486267678', null, '1', null);
-INSERT INTO `bbb_account` VALUES ('139', '40004', '2474639897357788', 'aes-256-cfb', '1', '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('136', '40001', '9834930422886962', 'aes-256-cfb', '1', null, null, null, null, '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('137', '40002', '2546051034570922', 'aes-256-cfb', '1', null, null, null, null, '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('138', '40003', '6432464599824218', 'aes-256-cfb', '1', null, null, null, null, '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('139', '40004', '2474639897357788', 'aes-256-cfb', '1', null, null, null, null, '1486267678', '1486303535', '1', '1');
+INSERT INTO `bbb_account` VALUES ('140', '40001', '6277867923254932', 'aes-256-cfb', '2', null, null, null, null, '1486303615', '1486305979', '1', '1');
+INSERT INTO `bbb_account` VALUES ('141', '40002', '6234267923232922', 'aes-256-cfb', '2', null, null, null, null, '1486303636', '1486305982', '1', '1');
+INSERT INTO `bbb_account` VALUES ('142', '40003', '6234267923243243', 'aes-256-cfb', '2', null, null, null, null, '1486306056', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('143', '40001', '6277867925257930', 'aes-256-cfb', '3', '233048351', '2017-01-25', '1', null, '1486308437', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('144', '40002', '8135747524346233', 'aes-256-cfb', '3', '22786018', '2017-01-25', '1', null, '1486308787', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('145', '40003', '4696626054718415', 'aes-256-cfb', '3', '3210724115', '2017-02-03', '1', null, '1486308815', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('146', '40004', '2054973125795120', 'aes-256-cfb', '3', '513542921', '2017-02-03', '1', null, '1486308857', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('147', '40001', '6277867932803930', 'aes-256-cfb', '4', '1065275811', '2017-01-14', '1', null, '1486309000', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('148', '40002', '8135746149346233', 'aes-256-cfb', '4', '2279333472', '2017-01-15', '1', null, '1486309047', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('149', '40003', '4696626195218415', 'aes-256-cfb', '4', '1065275811', '2017-01-15', '1', '', '1486309000', '1486309164', '1', '1');
+INSERT INTO `bbb_account` VALUES ('150', '40003', '2054973123595120', 'aes-256-cfb', '4', '2279333472', '2017-01-15', '1', '', '1486309047', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('151', '40001', '3435323032550510', 'aes-256-cfb', '5', '421898353', '2017-01-13', '1', null, '1486309371', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('152', '40002', '4208533391356469', 'aes-256-cfb', '5', '', '0000-00-00', '0', null, '1486309405', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('153', '40003', '3022223610663787', 'aes-256-cfb', '5', '80309027', '2017-01-12', '1', null, '1486309466', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('154', '40004', '7797733159502968', 'aes-256-cfb', '5', '158817965', '2017-01-11', '3', null, '1486309549', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('155', '40005', '9047831656178460', 'aes-256-cfb', '5', '2013387899', '2017-01-11', '1', null, '1486309590', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('156', '40003', '201701107586735%&', 'aes-256-cfb', '6', '1090217374', '2017-01-10', '1', null, '1486309653', '1486309838', '1', '1');
+INSERT INTO `bbb_account` VALUES ('157', '40002', 'hbs010940002', 'aes-256-cfb', '6', '3502403525', '2017-01-10', '3', null, '1486309702', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('158', '40001', 'hbs010940001', 'aes-256-cfb', '6', '', '2017-01-10', '1', null, '1486309783', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('159', '40004', '201701105238735%&', 'aes-256-cfb', '6', '821109849', '2017-02-01', '1', null, '1486309817', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('160', '40001', '7962310777044067', 'aes-256-cfb', '7', null, null, null, null, '1486311770', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('161', '40002', '4764739970754394', 'aes-256-cfb', '7', null, null, null, null, '1486311770', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('162', '40003', '3988555926276245', 'aes-256-cfb', '7', null, null, null, null, '1486311770', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('163', '40004', '3207977289508056', 'aes-256-cfb', '7', null, null, null, null, '1486311770', null, '1', null);
 
 -- ----------------------------
--- Table structure for `bbb_attachment`
+-- Table structure for bbb_account_use
+-- ----------------------------
+DROP TABLE IF EXISTS `bbb_account_use`;
+CREATE TABLE `bbb_account_use` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `qq` varchar(20) DEFAULT NULL,
+  `start_time` int(11) DEFAULT NULL,
+  `use_time` int(11) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `is_used` varchar(1) DEFAULT NULL COMMENT '1、正常使用 0、过期',
+  `create_time` int(11) unsigned DEFAULT NULL,
+  `update_time` int(11) unsigned DEFAULT NULL,
+  `create_user` bigint(20) DEFAULT NULL,
+  `update_user` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bbb_account_use
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bbb_attachment
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_attachment`;
 CREATE TABLE `bbb_attachment` (
@@ -177,7 +233,7 @@ CREATE TABLE `bbb_attachment` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `bbb_city`
+-- Table structure for bbb_city
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_city`;
 CREATE TABLE `bbb_city` (
@@ -540,7 +596,7 @@ INSERT INTO `bbb_city` VALUES ('342', '31', '省直辖行政单位', '659000', '
 INSERT INTO `bbb_city` VALUES ('343', '2', '天津市', '120100', null, '1', 'tianjinshi', '1');
 
 -- ----------------------------
--- Table structure for `bbb_dictionary`
+-- Table structure for bbb_dictionary
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_dictionary`;
 CREATE TABLE `bbb_dictionary` (
@@ -564,7 +620,7 @@ INSERT INTO `bbb_dictionary` VALUES ('17', '消息类型', '2', '0', 'MESSAGE_TY
 INSERT INTO `bbb_dictionary` VALUES ('18', '系统通知', '1', '17', '系统通知', '1', '系统通知');
 
 -- ----------------------------
--- Table structure for `bbb_district`
+-- Table structure for bbb_district
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_district`;
 CREATE TABLE `bbb_district` (
@@ -3729,7 +3785,7 @@ INSERT INTO `bbb_district` VALUES ('3143', '31', '342', '图木舒克市', '6590
 INSERT INTO `bbb_district` VALUES ('3144', '31', '342', '五家渠市', '659004', '659000', null, null, null);
 
 -- ----------------------------
--- Table structure for `bbb_message`
+-- Table structure for bbb_message
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_message`;
 CREATE TABLE `bbb_message` (
@@ -3750,7 +3806,7 @@ CREATE TABLE `bbb_message` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `bbb_node`
+-- Table structure for bbb_node
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_node`;
 CREATE TABLE `bbb_node` (
@@ -3769,7 +3825,7 @@ CREATE TABLE `bbb_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=190 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_node
@@ -3875,9 +3931,15 @@ INSERT INTO `bbb_node` VALUES ('180', 'getAll', '获取所有', '1', '获取所�
 INSERT INTO `bbb_node` VALUES ('181', 'addRows', '批量添加', '1', '批量添加', '50', '176', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('182', 'getAllByExample', '根据条件获取所有', '1', '根据条件获取所有', '50', '176', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('183', 'getConfigFile', '获取配置文件', '1', '获取配置文件', '50', '171', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('184', 'sscode', 'ss常用工具', '1', 'ss常用工具', '50', '162', '3', '1', '0');
+INSERT INTO `bbb_node` VALUES ('185', 'AccountUse', '帐户使用', '1', '帐户使用列表', '50', '1', '2', '0', '0');
+INSERT INTO `bbb_node` VALUES ('186', 'addOrUpdate', '增加或更新', '1', '增加或更新', '50', '185', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('187', 'pageList', '分页列表', '1', '分页列表', '50', '185', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('188', 'delRows', '删除', '1', '删除', '50', '185', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('189', 'getAll', '获取所有', '1', '获取所有', '50', '185', '3', '0', '0');
 
 -- ----------------------------
--- Table structure for `bbb_option`
+-- Table structure for bbb_option
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_option`;
 CREATE TABLE `bbb_option` (
@@ -3896,7 +3958,7 @@ CREATE TABLE `bbb_option` (
 INSERT INTO `bbb_option` VALUES ('1', '网站域名', 'www.wpsites.com', '类型字段', '网站的首页域名', 'site_url');
 
 -- ----------------------------
--- Table structure for `bbb_province`
+-- Table structure for bbb_province
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_province`;
 CREATE TABLE `bbb_province` (
@@ -3948,7 +4010,7 @@ INSERT INTO `bbb_province` VALUES ('33', '香  港', '810000', null, null, null)
 INSERT INTO `bbb_province` VALUES ('34', '澳  门', '820000', null, null, null);
 
 -- ----------------------------
--- Table structure for `bbb_role`
+-- Table structure for bbb_role
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_role`;
 CREATE TABLE `bbb_role` (
@@ -3972,7 +4034,7 @@ CREATE TABLE `bbb_role` (
 INSERT INTO `bbb_role` VALUES ('1', '网站管理员', '0', '1', '网站管理员', null, '1456737906', '1457058948');
 
 -- ----------------------------
--- Table structure for `bbb_role_user`
+-- Table structure for bbb_role_user
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_role_user`;
 CREATE TABLE `bbb_role_user` (
@@ -3991,7 +4053,7 @@ CREATE TABLE `bbb_role_user` (
 INSERT INTO `bbb_role_user` VALUES ('1', '1');
 
 -- ----------------------------
--- Table structure for `bbb_server`
+-- Table structure for bbb_server
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_server`;
 CREATE TABLE `bbb_server` (
@@ -4005,7 +4067,7 @@ CREATE TABLE `bbb_server` (
   `create_user` bigint(20) DEFAULT NULL,
   `update_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_server
@@ -4014,9 +4076,12 @@ INSERT INTO `bbb_server` VALUES ('1', 'bandwagonhost', 'https://bandwagonhost.co
 INSERT INTO `bbb_server` VALUES ('2', 'digitalocean', 'https://www.digitalocean.com/', 'luozhangyou123@gmail.com', 'l745068743', '1486217020', '1486271007', '1', '1');
 INSERT INTO `bbb_server` VALUES ('3', 'linode', 'https://www.linode.com/', 'luozhangyou123@gmail.com', 'l745068743', '1486217084', null, '1', null);
 INSERT INTO `bbb_server` VALUES ('4', 'vultr', 'https://www.vultr.com/', 'luozhangyou123@gmail.com', 'Luo745068743', '1486217893', '1486270979', '1', '1');
+INSERT INTO `bbb_server` VALUES ('5', 'win-vps', 'http://www.win-vps.com/', 'luozhangyou123@gmail.com', 'l745068743', '1486306285', null, '1', null);
+INSERT INTO `bbb_server` VALUES ('6', 'locvps', 'http://locvps.com/', 'luozhangyou123@gmail.com', 'l745068743', '1486306491', '1486307037', '1', '1');
+INSERT INTO `bbb_server` VALUES ('7', 'bandwagonhost-001', 'https://bandwagonhost.com/index.php', 'steptionone@outlook.com', 'l745068743', '1486308295', null, '1', null);
 
 -- ----------------------------
--- Table structure for `bbb_user`
+-- Table structure for bbb_user
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_user`;
 CREATE TABLE `bbb_user` (
@@ -4050,7 +4115,7 @@ CREATE TABLE `bbb_user` (
 INSERT INTO `bbb_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', null, '超级管理员', null, null, null, null, null, null, '1', '1', '超级管理员', '0', null, '0', null, '1458282079', null, null);
 
 -- ----------------------------
--- Table structure for `bbb_vps`
+-- Table structure for bbb_vps
 -- ----------------------------
 DROP TABLE IF EXISTS `bbb_vps`;
 CREATE TABLE `bbb_vps` (
@@ -4061,14 +4126,21 @@ CREATE TABLE `bbb_vps` (
   `password` varchar(80) DEFAULT NULL,
   `server_id` bigint(20) DEFAULT NULL,
   `ss_config` varchar(800) DEFAULT NULL,
+  `ss_status` varchar(1) DEFAULT '1' COMMENT '1、正常   2、测试',
   `create_time` int(11) unsigned DEFAULT NULL,
   `update_time` int(11) unsigned DEFAULT NULL,
   `create_user` bigint(20) DEFAULT NULL,
   `update_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_vps
 -- ----------------------------
-INSERT INTO `bbb_vps` VALUES ('1', '104.238.130.248', '22', 'root', '(8Wj7X[c.[R}o(Ke', '4', '{\r\n        \"server\":\"104.238.130.248\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"9834930422886962\",\"40002\":\"2546051034570922\",\"40003\":\"6432464599824218\",\"40004\":\"2474639897357788\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40004\":\"xiao40004\"\r\n        }\r\n    }', '1486198241', '1486219038', '1', '1');
+INSERT INTO `bbb_vps` VALUES ('1', '104.238.130.248', '22', 'root', '(8Wj7X[c.[R}o(Ke', '4', '{\r\n        \"server\":\"104.238.130.248\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"9834930422886962\",\"40002\":\"2546051034570922\",\"40003\":\"6432464599824218\",\"40004\":\"2474639897357788\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40004\":\"xiao40004\"\r\n        }\r\n    }', '2', '1486198241', '1486219038', '1', '1');
+INSERT INTO `bbb_vps` VALUES ('2', '138.128.194.94', '28622', 'root', 'dCmuTuv3WSFj', '1', '{\r\n        \"server\":\"138.128.194.94\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"6277867923254932\",\"40002\":\"6234267923232922\",\"40003\":\"6234267923243243\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\"\r\n        }\r\n    }', '2', '1486302221', '1486308172', '1', '1');
+INSERT INTO `bbb_vps` VALUES ('3', '104.194.81.211', '26471', 'root', 'jpP4w8sCR5n9', '7', '{\r\n        \"server\":\"104.194.81.211\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"6277867925257930\",\"40002\":\"8135747524346233\",\"40003\":\"4696626054718415\",\"40004\":\"2054973125795120\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40004\":\"xiao40004\"\r\n        }\r\n    }', '1', '1486308162', '1486308369', '1', '1');
+INSERT INTO `bbb_vps` VALUES ('4', '104.194.81.239', '27652', 'root', '23fPhkQHwHmZ', '7', '{\r\n        \"server\":\"104.194.81.239\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"6277867932803930\",\"40002\":\"8135746149346233\",\"40003\":\"4696626195218415\",\"40003\":\"2054973123595120\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40003\":\"xiao40003\"\r\n        }\r\n    }', '1', '1486308934', null, '1', null);
+INSERT INTO `bbb_vps` VALUES ('5', '23.252.108.10', '29835', 'root', 'S7xMsvg2tLah', '7', '{\r\n        \"server\":\"23.252.108.10\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"3435323032550510\",\"40002\":\"4208533391356469\",\"40003\":\"3022223610663787\",\"40004\":\"7797733159502968\",\"40005\":\"9047831656178460\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40004\":\"xiao40004\",\"40005\":\"xiao40005\"\r\n        }\r\n    }', '1', '1486309215', null, '1', null);
+INSERT INTO `bbb_vps` VALUES ('6', '23.105.207.35', '28619', 'root', 'yj4ke9uxnvdu', '7', '{\r\n        \"server\":\"23.105.207.35\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40003\":\"201701107586735%&\",\"40002\":\"hbs010940002\",\"40001\":\"hbs010940001\",\"40004\":\"201701105238735%&\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40003\":\"xiao40003\",\"40002\":\"xiao40002\",\"40001\":\"xiao40001\",\"40004\":\"xiao40004\"\r\n        }\r\n    }', '1', '1486309253', null, '1', null);
+INSERT INTO `bbb_vps` VALUES ('7', '23.106.149.138', '29198', 'root', 'AfzSDynmyvTQ', '7', '{\r\n        \"server\":\"23.106.149.138\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"7962310777044067\",\"40002\":\"4764739970754394\",\"40003\":\"3988555926276245\",\"40004\":\"3207977289508056\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40004\":\"xiao40004\"\r\n        }\r\n    }', '1', '1486311760', null, '1', null);

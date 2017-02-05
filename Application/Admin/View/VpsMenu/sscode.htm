@@ -1,0 +1,25 @@
+<script language="javascript">
+$(function(){
+	var th = $(".top").height();
+	th = 204-th
+	var wh = $(window).height()-th;
+});
+
+</script>
+<div style="padding:15px;">
+	<div>
+		<h3>CentOS安装：</h3>
+		<p>yum install python-setuptools && easy_install pip</p>
+		<p>pip install shadowsocks</p>
+		<hr />
+		<h3>启动：</h3>
+		<p>ssserver -c /etc/shadowsocks.json -d start</p>
+		<p>ssserver -c /etc/shadowsocks.json -d stop</p>
+	</div>
+	<hr />
+	<div >
+		<h3>iOS 客户端:shadowsocks-iOS | MobileShadowSocks</h3>
+		<p>https://github.com/shadowsocks/shadowsocks-iOS</p>
+		<p>https://github.com/linusyang/MobileShadowSocks</p>
+	</div>
+</div>
