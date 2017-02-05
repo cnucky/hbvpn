@@ -33,3 +33,13 @@ function personalCenterMenuList(){
 function getLengthNum($length){
     return rand(pow(10,($length-1)), pow(10,$length)-1);
 }
+
+/**
+ * 生成配置文件
+ */
+function set_shadowsocks_file($ss_confg){
+
+    $file = dirname(dirname(dirname(dirname(__FILE__)))).'/shadowsocks.json';
+    return file_put_contents($file,$ss_confg);
+}
+

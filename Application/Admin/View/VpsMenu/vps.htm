@@ -108,7 +108,8 @@ $(function(){
 				formatter: function(value,row,index){
 					var html='';
 					if (row.id){
-						html=html+'<a href="javascript:config_div_vps('+row.id+');" class="easyui-linkbutton" style="width:80px;color:black;">生成配置文件</a>';
+						html=html+'<a href="javascript:config_div_vps('+row.id+');" class="easyui-linkbutton" style="width:80px;color:black;">生成配置</a>';
+						html=html+'|=|<a href="javascript:get_config_file_vps('+row.id+');" class="easyui-linkbutton" style="width:80px;color:black;">获取文件</a>';
 					}
 					return html;
 				}		
@@ -136,11 +137,14 @@ function config_div_vps(id){
 	var o={};
 	o['vps_id']=id;
 	
-	var rows=ajaxReturnList("__ROOT__/Admin/Account/getAllByExample",o);
+	var rtr=ajaxReturnList("__ROOT__/Admin/Account/getAllByExample",o);
+	var rows=rtr['rows'];
+	var vps=rtr['vps'];
+	$("#configTable_vps").empty();
 	for(var i=0;i<rows.length;i++){
 		add_account_tr_vps(rows[i]);
 	}
-	
+	$("#show_config_vps").textbox('setValue',vps.ss_config);
 	$('#configDiv_vps').window('open');
 }
 
@@ -156,7 +160,7 @@ function add_config_vps(){
 			add_account_tr_vps(rtr['rows'][i]);
 		}
 		
-		$("#show_config_vps").text(rtr['ss_config']);
+		$("#show_config_vps").textbox('setValue',rtr['ss_config']);
 	}	
 }
 
@@ -165,6 +169,16 @@ function add_account_tr_vps(rtr){
 								+'<td></td><td>'+rtr.ip+'</td>'+'<td></td><td>'+rtr.port+'</td>'
 								+'<td></td><td>'+rtr.password+'</td>'+'<td></td><td>'+rtr.secret_way+'</td>'
 							+'</tr>');
+}
+
+
+function get_config_file_vps(id){
+	var o={};
+	o['vps_id']=id;
+	var rtr=ajaxReturnRow("__ROOT__/Admin/Vps/getConfigFile",o);
+	if(rtr['flag']){
+		window.open("__ROOT__/shadowsocks.json");
+	}
 }
 </script>
 <div>
@@ -210,7 +224,7 @@ function add_account_tr_vps(rtr){
 	</div>
 </div>
 
-<div id="configDiv_vps" class="easyui-window" title="生成配置帐号文件" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:700px;height:600px;padding:5px;">
+<div id="configDiv_vps" class="easyui-window" title="生成配置帐号文件" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:640px;height:600px;padding:5px;">
 	<div class="easyui-layout" data-options="fit:true">
 		<div data-options="region:'center',border:true">
 			<form id="configForm_vps" class="easyui-form" method="post" data-options="novalidate:true">
@@ -234,11 +248,17 @@ function add_account_tr_vps(rtr){
 								<option value="aes-256-cfb">aes-256-cfb</option>
 							</select>
 						</td>
-						<td><a href="javascript:add_config_vps();" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a></td>
+						<td><a href="javascript:add_config_vps();" class="easyui-linkbutton" >更新</a></td>
 		    		</tr>
 				</table>
-				<table id="configTable_vps" cellpadding="5"></table>
-				<div id="show_config_vps"></div>
+				<center>
+					<div style="width:580px;background: #E5E5E5;">
+						<table id="configTable_vps" cellpadding="5"></table>
+					</div>
+				</center>
+				<center>
+					<input id="show_config_vps" class="easyui-textbox" data-options="multiline:true," style="height:400px;width:580px;"></input>
+				</center>
 		    </form>
 		</div>
 	</div>

@@ -95,12 +95,12 @@ class AccountController extends CommonController {
                     
                     if(($i+1)==$count){
                         $ip=$row['ip'];
-                        $port_password=$port_password."".$row['port'].":".$row['password'];
-                        $comment=$comment."".$row['port'].":xiao".$row['port'];
+                        $port_password=$port_password.'"'.$row['port'].'":'.'"'.$row['password'].'"';
+                        $comment=$comment.'"'.$row['port'].'":"xiao'.$row['port'].'"';
                     }else {
                         $ip=$row['ip'];
-                        $port_password=$port_password."".$row['port'].":".$row['password'].',';
-                        $comment=$comment."".$row['port'].":xiao".$row['port'].',';
+                        $port_password=$port_password.'"'.$row['port'].'":'.'"'.$row['password'].'"'.',';
+                        $comment=$comment.'"'.$row['port'].'":"xiao'.$row['port'].'",';
                     }
                     
 //                     $data['id']=$rtr['object'];
@@ -111,6 +111,12 @@ class AccountController extends CommonController {
                 $rtr['ss_config']=str_replace("%vps_ip%",$ip,C('SS_CONFIG_MODEL'));
                 $rtr['ss_config']=str_replace("%port_password%",$port_password,$rtr['ss_config']);
                 $rtr['ss_config']=str_replace("%comment%",$comment,$rtr['ss_config']);
+                
+                //更新vps ss_config字段
+                $vps['ss_config']=$rtr['ss_config'];
+                $vps['id']=$data['vps_id'];
+                
+                D("Vps")->updateSSConfigVps($vps,"Vps");
                 
                 $this->ajaxReturn($rtr);
             }
@@ -158,9 +164,11 @@ class AccountController extends CommonController {
         if (!empty($vps_id)){
             $condition['a.vps_id']=$vps_id;
         }
-         
         $example['condition']=$condition;
-        $rtr=D($beanName)->getAllList($example,$beanName);
+        $rtr['rows']=D($beanName)->getAllList($example,$beanName);
+        $rtr['vps']=D("Vps")->findRowByCondition($condition_vps['id']=$vps_id,"Vps");
+        
+        
         $this->ajaxReturn($rtr);
     }
     

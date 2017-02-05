@@ -42,6 +42,17 @@ class VpsModel extends CommonRelationModel{
         return $count = D($beanName)->where($condition)->count();
     }
     
+    
+    public static function updateSSConfigVps($data,$beanName){
+        return $count = D($beanName)->field('ss_config')->save($data);
+    }
+    
+    public static function findRowByCondition($condition,$beanName){
+        $object = D($beanName);
+        $result=$object->
+        where($condition)->find();
+        return $result;
+    }
 }
 
 ?>
