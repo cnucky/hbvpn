@@ -81,4 +81,15 @@ class VpsController extends CommonController {
     	$this->ajaxReturn($rtr);
     }
     
+    public function getConfigFile(){
+        $beanName=$this->phpbean;
+        $vps_id=$_POST['vps_id'];
+        $condition['id']=$vps_id;
+        $row=D($beanName)->findRowByCondition($condition,$beanName);
+        set_shadowsocks_file($row['ss_config']);
+        $rtr['flag']=true;
+        $rtr['msg']="操作成功";
+        $this->ajaxReturn($rtr);
+    }
+    
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2017-02-04 21:01:11
+Date: 2017-02-05 20:33:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -120,6 +120,14 @@ INSERT INTO `bbb_access` VALUES ('1', '172', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '173', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '174', '0', '0', '0');
 INSERT INTO `bbb_access` VALUES ('1', '175', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '176', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '177', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '178', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '179', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '180', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '181', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '182', '0', '0', '0');
+INSERT INTO `bbb_access` VALUES ('1', '183', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `bbb_account`
@@ -136,11 +144,15 @@ CREATE TABLE `bbb_account` (
   `create_user` bigint(20) DEFAULT NULL,
   `update_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_account
 -- ----------------------------
+INSERT INTO `bbb_account` VALUES ('136', '40001', '9834930422886962', 'aes-256-cfb', '1', '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('137', '40002', '2546051034570922', 'aes-256-cfb', '1', '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('138', '40003', '6432464599824218', 'aes-256-cfb', '1', '1486267678', null, '1', null);
+INSERT INTO `bbb_account` VALUES ('139', '40004', '2474639897357788', 'aes-256-cfb', '1', '1486267678', null, '1', null);
 
 -- ----------------------------
 -- Table structure for `bbb_attachment`
@@ -3757,7 +3769,7 @@ CREATE TABLE `bbb_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_node
@@ -3855,6 +3867,14 @@ INSERT INTO `bbb_node` VALUES ('172', 'addOrUpdate', '增加或更新', '1', '�
 INSERT INTO `bbb_node` VALUES ('173', 'pageList', '分页列表', '1', '分页列表', '50', '171', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('174', 'delRows', '删除', '1', '删除', '50', '171', '3', '0', '0');
 INSERT INTO `bbb_node` VALUES ('175', 'getAll', '获取所有', '1', '获取所有', '50', '171', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('176', 'Account', '帐户管理', '1', '帐户管理', '50', '1', '2', '0', '0');
+INSERT INTO `bbb_node` VALUES ('177', 'addOrUpdate', '增加或更新', '1', '增加或更新', '50', '176', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('178', 'pageList', '分页列表', '1', '分页列表', '50', '176', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('179', 'delRows', '删除', '1', '删除', '50', '176', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('180', 'getAll', '获取所有', '1', '获取所有', '50', '176', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('181', 'addRows', '批量添加', '1', '批量添加', '50', '176', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('182', 'getAllByExample', '根据条件获取所有', '1', '根据条件获取所有', '50', '176', '3', '0', '0');
+INSERT INTO `bbb_node` VALUES ('183', 'getConfigFile', '获取配置文件', '1', '获取配置文件', '50', '171', '3', '0', '0');
 
 -- ----------------------------
 -- Table structure for `bbb_option`
@@ -3985,12 +4005,15 @@ CREATE TABLE `bbb_server` (
   `create_user` bigint(20) DEFAULT NULL,
   `update_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbb_server
 -- ----------------------------
-INSERT INTO `bbb_server` VALUES ('1', 'bandwagonhost', 'https://bandwagonhost.com/index.php', 'admin', 'admin', '1486196331', '1486198834', '1', '1');
+INSERT INTO `bbb_server` VALUES ('1', 'bandwagonhost', 'https://bandwagonhost.com/index.php', 'luozhangyou123@gmail.com', 'l745068743', '1486196331', '1486217101', '1', '1');
+INSERT INTO `bbb_server` VALUES ('2', 'digitalocean', 'https://www.digitalocean.com/', 'luozhangyou123@gmail.com', 'l745068743', '1486217020', '1486271007', '1', '1');
+INSERT INTO `bbb_server` VALUES ('3', 'linode', 'https://www.linode.com/', 'luozhangyou123@gmail.com', 'l745068743', '1486217084', null, '1', null);
+INSERT INTO `bbb_server` VALUES ('4', 'vultr', 'https://www.vultr.com/', 'luozhangyou123@gmail.com', 'Luo745068743', '1486217893', '1486270979', '1', '1');
 
 -- ----------------------------
 -- Table structure for `bbb_user`
@@ -4037,6 +4060,7 @@ CREATE TABLE `bbb_vps` (
   `account` varchar(80) DEFAULT NULL,
   `password` varchar(80) DEFAULT NULL,
   `server_id` bigint(20) DEFAULT NULL,
+  `ss_config` varchar(800) DEFAULT NULL,
   `create_time` int(11) unsigned DEFAULT NULL,
   `update_time` int(11) unsigned DEFAULT NULL,
   `create_user` bigint(20) DEFAULT NULL,
@@ -4047,4 +4071,4 @@ CREATE TABLE `bbb_vps` (
 -- ----------------------------
 -- Records of bbb_vps
 -- ----------------------------
-INSERT INTO `bbb_vps` VALUES ('1', '21.231.11.23', '22', 'root', '21313fdsa', '1', '1486198241', '1486200688', '1', '1');
+INSERT INTO `bbb_vps` VALUES ('1', '104.238.130.248', '22', 'root', '(8Wj7X[c.[R}o(Ke', '4', '{\r\n        \"server\":\"104.238.130.248\",\r\n        \"local_address\": \"127.0.0.1\",\r\n        \"local_port\":1080,\r\n        \"timeout\":300,\r\n        \"method\":\"aes-256-cfb\",\r\n        \"port_password\":\r\n        {\r\n            \"40001\":\"9834930422886962\",\"40002\":\"2546051034570922\",\"40003\":\"6432464599824218\",\"40004\":\"2474639897357788\"\r\n        },\r\n        \"_comment\":\r\n        {\r\n            \"40001\":\"xiao40001\",\"40002\":\"xiao40002\",\"40003\":\"xiao40003\",\"40004\":\"xiao40004\"\r\n        }\r\n    }', '1486198241', '1486219038', '1', '1');
