@@ -1,4 +1,4 @@
-<script language="javascript">
+<?php if (!defined('THINK_PATH')) exit();?><script language="javascript">
 $(function(){
 	var tableList="tableList_vps";
 	var auForm ="addForm_vps";
@@ -29,7 +29,7 @@ $(function(){
 		pagination:pn,
 		pageSize:pr,
 		pageList:[30,50,80,100],
-		url:'__ROOT__/Admin/Vps/pageList',
+		url:'/hbvpn/Admin/Vps/pageList',
 		fitColumns:true,
 		nowrap:true,
 		selectOnCheck:false,
@@ -79,7 +79,7 @@ $(function(){
 					$.message.alert('警告','请先选择一行！','warning');
 				}else{
 					var ids=selectedRow.id;
-					ajaxDelRowsDatagrid('__ROOT__/Admin/Vps/delRows',ids,tableList);
+					ajaxDelRowsDatagrid('/hbvpn/Admin/Vps/delRows',ids,tableList);
 				}
 			}
 		},'-',{
@@ -116,14 +116,14 @@ $(function(){
 		]]
 	});
 	$("#"+saveBtn).click(function(){
-		ajaxSubmitForm(auForm,'__ROOT__/Admin/Vps/addOrUpdate',addDiv,tableList);
+		ajaxSubmitForm(auForm,'/hbvpn/Admin/Vps/addOrUpdate',addDiv,tableList);
 	});
 	$("#"+cancelBtn).click(function(){
 		$('#'+addDiv).window('close');
 	});
 	
 	$('#server_vps').combobox({
-	    url:'__ROOT__/Admin/Server/getAll',
+	    url:'/hbvpn/Admin/Server/getAll',
 	    valueField:'id',
 	    textField:'name'
 	});
@@ -136,7 +136,7 @@ function config_div_vps(id){
 	var o={};
 	o['vps_id']=id;
 	
-	var rows=ajaxReturnList("__ROOT__/Admin/Account/getAllByExample",o);
+	var rows=ajaxReturnList("/hbvpn/Admin/Account/getAllByExample",o);
 	for(var i=0;i<rows.length;i++){
 		add_account_tr_vps(rows[i]);
 	}
@@ -150,7 +150,7 @@ function add_config_vps(){
 		o['vps_id']=$("#config_vps_id_vps").val();
 		o['vps_count']=$("#config_vps_count_vps").combobox('getValue');
 		o['secret_way']=$("#config_secret_way_vps").combobox('getValue');
-		var rtr=ajaxReturnRow("__ROOT__/Admin/account/addRows",o);
+		var rtr=ajaxReturnRow("/hbvpn/Admin/account/addRows",o);
 		$("#configTable_vps").empty();
 		for(var i=0;i<rtr['rows'].length;i++){
 			add_account_tr_vps(rtr['rows'][i]);

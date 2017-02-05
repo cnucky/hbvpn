@@ -1,0 +1,24 @@
+[ 2017-02-04T23:18:58+08:00 ] ::1 /hbvpn/Admin/Account/pageList?page=1&rows=30&sort=id&order=desc
+ERR: 无法加载控制器:Account
+
+[ 2017-02-04T23:19:35+08:00 ] ::1 /hbvpn/Admin/Account/pageList?page=1&rows=30&sort=id&order=desc
+ERR: 无法加载控制器:Account
+
+[ 2017-02-04T23:19:38+08:00 ] ::1 /hbvpn/Admin/Account/pageList?page=1&rows=30&sort=id&order=desc
+ERR: 无法加载控制器:Account
+
+[ 2017-02-04T23:28:47+08:00 ] ::1 /hbvpn/Admin/Account/pageList?page=1&rows=30&sort=id&order=desc
+ERR: 无法加载控制器:Account
+
+[ 2017-02-04T23:29:12+08:00 ] ::1 /hbvpn/Admin/account/addRows
+ERR: 无法加载控制器:Account
+
+[ 2017-02-04T23:30:02+08:00 ] ::1 /hbvpn/Admin/account/addRows
+ERR: 无法加载控制器:Account
+
+[ 2017-02-04T23:31:54+08:00 ] ::1 /hbvpn/Admin/Account/pageList?page=1&rows=30&sort=id&order=desc
+ERR: 1054:Champ 'v.ip' inconnu dans field list
+ [ SQL语句 ] : SELECT DISTINCT  v.id,v.ip,v.sshport,v.account,v.password,v.server_id,s.name as serverName,1 as action FROM bbb_account v LEFT JOIN bbb_server s ON s.id = v.server_id  ORDER BY id desc LIMIT 0,30  
+ERR: 1054:Champ 'v.ip' inconnu dans field list
+ [ SQL语句 ] : SELECT DISTINCT  v.id,v.ip,v.sshport,v.account,v.password,v.server_id,s.name as serverName,1 as action FROM bbb_account v LEFT JOIN bbb_server s ON s.id = v.server_id  ORDER BY id desc LIMIT 0,30  
+
