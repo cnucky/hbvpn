@@ -106,6 +106,7 @@ class AccountController extends CommonController {
 //                     $data['id']=$rtr['object'];
                     array_push($list, $row);
                 }
+                
                 $rtr['rows']=$list;
                 $rtr['ss_config']=str_replace("%vps_ip%",$ip,C('SS_CONFIG_MODEL'));
                 $rtr['ss_config']=str_replace("%port_password%",$port_password,$rtr['ss_config']);
