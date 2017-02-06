@@ -28,9 +28,10 @@ class AccountModel extends CommonRelationModel{
         $relation=$example['relation'];
         $result=$object->
             distinct(true)->
-            field('a.id,a.port,a.password,a.secret_way,a.port,a.use_qq,a.use_time,a.start_time,v.id as vps_id,v.ip')->
+            field('a.id,a.port,a.password,a.secret_way,a.port,au.use_qq,au.use_time,au.start_time,au.is_used,v.id as vps_id,v.ip')->
             alias('a')->
             join('LEFT JOIN __VPS__ v ON v.id = a.vps_id')->
+            join('LEFT JOIN __ACCOUNT_USE__ au ON au.account_id = a.id')->
             where($condition)->
             order($order['sort'].' '.$order['order'])->
             page($pageBean['page'],$pageBean['rows'])->relation($relation)->select();
