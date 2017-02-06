@@ -40,13 +40,17 @@ class AccountUseController extends CommonController {
     		if ($data['id']>0){
     			$data['update_time']=time();
     			$data['update_user']=$user_id;
-    			$rtr['object'] = D($beanName)->updateRow($data,$beanName);
+    			$object_id = D($beanName)->updateRow($data,$beanName);
+    			$rtr['object']=$data;
     			$rtr['msg']="更新成功";
     			$this->ajaxReturn($rtr);
     		}else{
     			$data['create_time']=time();
     			$data['create_user']=$user_id;
-    			$rtr['object']= D($beanName)->addRow($data,$beanName);
+    			$object_id= D($beanName)->addRow($data,$beanName);
+    			$object=$data;
+    			$object['id']=$object_id;
+    			$rtr['object']=$object;
     			$rtr['msg']="添加成功";
     			$this->ajaxReturn($rtr);
     		}
@@ -55,6 +59,21 @@ class AccountUseController extends CommonController {
     		$rtr['msg']="操作失败";
     		$this->ajaxReturn($rtr);
     	}
+    }
+    
+    public function delRow(){
+        try {
+            $beanName=$this->phpbean;
+            $data['ids']=$_POST['id'];
+            $rtr['flag']=true;
+            $rtr['object']= D($beanName)->delRows($data,$beanName);
+            $rtr['msg']="操作成功";
+            $this->ajaxReturn($rtr);
+        } catch (\Exception $e) {
+            $rtr['flag']=false;
+            $rtr['msg']="操作失败";
+            $this->ajaxReturn($rtr);
+        }
     }
     
     public function delRows(){
@@ -76,9 +95,20 @@ class AccountUseController extends CommonController {
     	$beanName=$this->phpbean;
     	$example['relation']=false;
     	 
-    	$example['condition']=$condition;
     	$rtr=D($beanName)->getAllList($example,$beanName);
     	$this->ajaxReturn($rtr);
+    }
+    
+    
+    public function getAllByAccountId(){
+        $beanName=$this->phpbean;
+        $example['relation']=false;
+    
+        $condition['account_id']=$_POST['account_id'];
+        $example['condition']=$condition;
+    
+        $rtr=D($beanName)->getAllList($example,$beanName);
+        $this->ajaxReturn($rtr);
     }
     
 }

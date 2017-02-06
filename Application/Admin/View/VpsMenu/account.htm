@@ -39,7 +39,19 @@ $(function(){
 			
 		},
 		onDblClickRow:function(e,rowIndex,rowData){
+			$("#accountUse_account_id_account").val(rowIndex.id);
 			
+			var o={};
+			o['account_id']=rowIndex.id;
+			var rows=ajaxReturnList("__ROOT__/Admin/AccountUse/getAllByAccountId",o);
+			$("#account_use_list_account").empty();
+			for(var i=0;i<rows.length;i++){
+				
+				add_idcard_tr_account(rows[i].id,rows[i].use_qq,rows[i].start_time,rows[i].use_time,rows[i].is_used);
+			}
+			
+			
+			$("#accountUseDiv_account").window('open');
 		},
 		toolbar:[{
 		iconCls: 'fa fa-easyui fa-plus-square',
@@ -121,7 +133,59 @@ $(function(){
 	    valueField:'id',
 	    textField:'ip'
 	});
+	
 });
+
+function add_accountUse_account(){
+	var formName="accountUseForm_account";
+	var basePath="__ROOT__/Admin/AccountUse/addOrUpdate"
+	$('#'+formName).form('submit',{
+		url:basePath,
+		onSubmit: function(){
+			return $('#'+formName).form('validate');
+		},
+		success:function(data){
+			var obj = eval('(' + data + ')');
+			if(obj.flag){
+				var row=obj.object;
+				add_idcard_tr_account(row['id'],row['use_qq'],row['start_time'],row['use_time'],row['is_used']);
+				
+			}else{
+				 $.messager.alert('系统提示', obj.msg , 'info');
+			}
+		},
+		error:function(data){
+		    $.messager.alert('警告', obj.msg , 'warn');
+		}
+	});
+	
+}
+
+function add_idcard_tr_account(id,use_qq,start_time,use_time,is_used){
+	var used="否";
+	if(is_used){
+		used="是";
+	}
+	$("#account_use_list_account").append('<tr id="account-use-del-control-'+id+'" class="account-use-del-control">'
+								+'<td></td><td>'+use_qq+'</td>'+'<td></td><td>'+start_time+'</td>'
+								+'<td></td><td>'+use_time+'</td>'+'<td></td><td>'+used+'</td>'
+								+'<td>'
+								+'<a style="color:red;" href="javascript:remove_account_use_tr_account('+id+');" class="easyui-linkbutton">停用</a>'
+								+'||<a style="color:red;" href="javascript:remove_account_use_tr_account('+id+');" class="easyui-linkbutton">续费</a>'
+								+'||<a style="color:red;" href="javascript:remove_account_use_tr_account('+id+');" class="easyui-linkbutton">删除</a>'
+								+'</td>'
+							+'</tr>');
+}
+
+function remove_account_use_tr_account(id){
+	var o={};
+	o['id']=id;
+	var rtr=ajaxReturnRow("__ROOT__/Admin/AccountUse/delRow",o);
+	var flag=rtr['flag'];
+	if(flag){
+		$("#account-use-del-control-"+id).remove();
+	}
+}
 
 </script>
 <div>
@@ -129,7 +193,7 @@ $(function(){
 </div>
 <div id="addDiv_account" class="easyui-window" title="添加" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:600px;height:360px;padding:5px;">
 	<div class="easyui-layout" data-options="fit:true">
-		<div data-options="region:'center',border:true">
+		<div data-options="region:'center',baccount:true">
 			<form id="addForm_account" class="easyui-form" method="post" data-options="novalidate:true">
 				<input name="data[id]" type="hidden" />
 		    	<table cellpadding="5">
@@ -155,9 +219,34 @@ $(function(){
 							</select>
 		    			</td>
 		    		</tr>
+		    	</table>
+		    </form>
+		</div>
+		<div data-options="region:'south',baccount:false" style="text-align:right;padding:5px 0 0;">
+			<a id="saveBtn_account" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-check'" href="javascript:void(0)" style="width:80px">保存</a>
+			<a id="cancelBtn_account" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-times'" href="javascript:void(0)" style="width:80px">取消</a>
+		</div>
+	</div>
+</div>
+
+
+<div id="accountUseDiv_account" class="easyui-window" title="添加用户信息" data-options="iconCls:'fa fa-dot-circle-o',closed:true" style="width:700px;height:600px;padding:5px;">
+	<div class="easyui-layout" data-options="fit:true">
+		<div data-options="region:'center',baccount:true">
+			<form id="accountUseForm_account" class="easyui-form" method="post" data-options="novalidate:true">
+				<input id="accountUse_account_id_account" name="data[account_id]" type="hidden" />
+		    	<table id="accountUse_table_account" cellpadding="5">
 		    		<tr>
 		    			<td><div style="width:62px;text-align: right;">用户qq:</div></td>
-		    			<td colspan="3"><input class="easyui-textbox" name="data[use_qq]" data-options="" style="width:455px;height:30px;" type="text"></input></td>
+		    			<td><input class="easyui-textbox" name="data[use_qq]" data-options="" style="width:184px;height:30px;" type="text"></input></td>
+		    		
+		    			<td><div style="width:62px;text-align: right;">是否使用:</div></td>
+		    			<td>
+							<select name="data[is_used]" class="easyui-combobox" data-options="editable:false" style="width:184px;height:30px;">
+								<option value="1">是</option>
+								<option value="0">否</option>
+							</select>
+						</td>
 		    		</tr>
 		    		<tr>
 		    			<td><div style="width:62px;text-align: right;">开始时间:</div></td>
@@ -165,13 +254,14 @@ $(function(){
 		    			
 		    			<td><div style="width:62px;text-align: right;">时长/月:</div></td>
 		    			<td><input class="easyui-numberbox" name="data[use_time]" data-options="" style="width:184px;height:30px;" type="text"></input></td>
+		    			
+		    			<td><a href="javascript:add_accountUse_account();" class="easyui-linkbutton" style="width:120px;" data-options="iconCls:'icon-add'">添加</a></td>
 		    		</tr>
 		    	</table>
+		    	<table id="account_use_list_account">
+		    		
+		    	</table>
 		    </form>
-		</div>
-		<div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-			<a id="saveBtn_account" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-check'" href="javascript:void(0)" style="width:80px">保存</a>
-			<a id="cancelBtn_account" class="easyui-linkbutton" data-options="iconCls:'fa fa-easyui fa-times'" href="javascript:void(0)" style="width:80px">取消</a>
 		</div>
 	</div>
 </div>
